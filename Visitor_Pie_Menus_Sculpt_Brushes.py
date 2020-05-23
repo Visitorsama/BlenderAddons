@@ -35,6 +35,8 @@ from bpy.types import Menu
 addon_keymaps = []
 brush_icons = {}
 brush_icons2 = {}
+brush_icons3 = {}
+brush_icons4 = {}
 
 def create_icons():
     global brush_icons
@@ -56,9 +58,37 @@ def create_icons2():
         icon_value = bpy.app.icons.new_triangles_from_file(filename)
         brush_icons2[brush] = icon_value
 
+def create_icons3():
+    global brush_icons3
+    icons_directory = bpy.utils.system_resource('DATAFILES', "icons")
+    brushes = ["border_hide", "border_mask", "lasso_mask", "mesh_filter"]
+    for brush in brushes:
+        filename = os.path.join(icons_directory, f"ops.sculpt.{brush}.dat")
+        icon_value = bpy.app.icons.new_triangles_from_file(filename)
+        brush_icons3[brush] = icon_value
+
+def create_icons4():
+    global brush_icons4
+    icons_directory = bpy.utils.system_resource('DATAFILES', "icons")
+    brushes = ["bone_envelope", "bone_size", "edge_slide", "push_pull",
+    "resize.cage","resize","rotate","shear","shrink_fatten","tilt","tosphere",
+    "transform","translate","vert_slide","vertex_random",]
+    for brush in brushes:
+        filename = os.path.join(icons_directory, f"ops.transform.{brush}.dat")
+        icon_value = bpy.app.icons.new_triangles_from_file(filename)
+        brush_icons4[brush] = icon_value
+
 def release_icons():
     global brush_icons
+    global brush_icons2
+    global brush_icons3
     for value in brush_icons.values():
+        bpy.app.icons.release(value)
+    for value in brush_icons2.values():
+        bpy.app.icons.release(value)
+    for value in brush_icons3.values():
+        bpy.app.icons.release(value)
+    for value in brush_icons4.values():
         bpy.app.icons.release(value)
 
 class VIEW3D_MT_pie_mask_1(Menu):
@@ -79,8 +109,8 @@ class VIEW3D_MT_pie_mask_1(Menu):
         op = pie.operator("paint.mask_flood_fill", text='    Clear Mask', icon_value=brush_icons["mask"],)
         op.mode = 'VALUE'
         op.value = 0
-        op = pie.operator("view3d.select_box", text="    Box Mask", icon_value=brush_icons["mask"],)
-        op = pie.operator("paint.mask_lasso_gesture", text="Lasso Mask", icon_value=brush_icons["mask"],)
+        op = pie.operator("view3d.select_box", text="    Box Mask", icon_value=brush_icons3["border_mask"],)
+        op = pie.operator("paint.mask_lasso_gesture", text="    Lasso Mask", icon_value=brush_icons3["lasso_mask"],)
         
 class VIEW3D_MT_pie_mask_2(Menu):
     bl_label = "Mask Edit 2"
@@ -177,7 +207,6 @@ class VIEW3D_MT_pie_brushes_1(Menu):
     bl_space_type = 'SCULPT'
 
     def draw(self, _context):
-        global brush_icons
         layout = self.layout
         pie = layout.menu_pie()
         pie.scale_y = 1.2
@@ -206,7 +235,6 @@ class VIEW3D_MT_pie_brushes_2(Menu):
     bl_space_type = 'SCULPT'
 
     def draw(self, _context):
-        global brush_icons
         layout = self.layout
         pie = layout.menu_pie()
         pie.scale_y = 1.2
@@ -229,7 +257,6 @@ class VIEW3D_MT_pie_brushes_3(Menu):
     bl_space_type = 'SCULPT'
 
     def draw(self, _context):
-        global brush_icons
         layout = self.layout
         pie = layout.menu_pie()
         pie.scale_y = 1.2
@@ -257,7 +284,6 @@ class VIEW3D_MT_pie_brushes_4(Menu):
     bl_space_type = 'SCULPT'
 
     def draw(self, _context):
-        global brush_icons
         layout = self.layout
         pie = layout.menu_pie()
         pie.scale_y = 1.2
@@ -267,11 +293,11 @@ class VIEW3D_MT_pie_brushes_4(Menu):
         op.name='builtin_brush.Mask'
         op = pie.operator("wm.tool_set_by_id", text='    Slide Relax', icon_value=995,)
         op.name='builtin_brush.Slide Relax'
-        op = pie.operator("wm.tool_set_by_id", text='    Box Mask', icon_value=998,)
+        op = pie.operator("wm.tool_set_by_id", text='    Box Mask', icon_value=brush_icons3["border_mask"],)
         op.name='builtin.box_mask'
-        op = pie.operator("wm.tool_set_by_id", text='    Box Hide', icon_value=999,)
+        op = pie.operator("wm.tool_set_by_id", text='    Box Hide', icon_value=brush_icons3["border_hide"],)
         op.name='builtin.box_hide'
-        op = pie.operator("wm.tool_set_by_id", text='    Mesh Filter', icon_value=1000,)
+        op = pie.operator("wm.tool_set_by_id", text='    Mesh Filter', icon_value=brush_icons3["mesh_filter"],)
         op.name='builtin.mesh_filter'
 
 class VIEW3D_MT_pie_brushes_5(Menu):
@@ -283,13 +309,13 @@ class VIEW3D_MT_pie_brushes_5(Menu):
         layout = self.layout
         pie = layout.menu_pie()
         pie.scale_y = 1.2
-        op = pie.operator("wm.tool_set_by_id", text='    Move', icon_value=968,)
+        op = pie.operator("wm.tool_set_by_id", text='    Move', icon_value=brush_icons4["translate"],)
         op.name='builtin.move'
-        op = pie.operator("wm.tool_set_by_id", text='    Rotate', icon_value=969,)
+        op = pie.operator("wm.tool_set_by_id", text='    Rotate', icon_value=brush_icons4["rotate"],)
         op.name='builtin.rotate'
-        op = pie.operator("wm.tool_set_by_id", text='    Scale', icon_value=970,)
+        op = pie.operator("wm.tool_set_by_id", text='    Scale', icon_value=brush_icons4["resize"],)
         op.name='builtin.scale'
-        op = pie.operator("wm.tool_set_by_id", text='    Transform', icon_value=971,)
+        op = pie.operator("wm.tool_set_by_id", text='    Transform', icon_value=brush_icons4["transform"],)
         op.name='builtin.transform'
         pie.separator()
         pie.separator()
@@ -302,7 +328,6 @@ class VIEW3D_MT_brushes_6(Menu):
     bl_space_type = 'SCULPT'
 
     def draw(self, _context):
-        global brush_icons2
         layout = self.layout
         layout.scale_y = 1.5
         op = layout.operator("wm.tool_set_by_id", text='    Annotate',         icon_value=brush_icons2["draw"],)
@@ -359,6 +384,8 @@ classes = (
 def register():
     create_icons()
     create_icons2()
+    create_icons3()
+    create_icons4()
     from bpy.utils import register_class
     for cls in classes:
         register_class(cls)
