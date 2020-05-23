@@ -69,17 +69,18 @@ class VIEW3D_MT_pie_mask_1(Menu):
     def draw(self, _context):
         layout = self.layout
         pie = layout.menu_pie()
+        pie.scale_y = 1.2
 
-        op = pie.operator("paint.mask_flood_fill", text='Invert Mask', icon="BLENDER")
+        op = pie.operator("paint.mask_flood_fill", text='    Invert Mask', icon_value=brush_icons["mask"],)
         op.mode = 'INVERT'
-        op = pie.operator("paint.mask_flood_fill", text="Fill Mask", icon="BLENDER")
+        op = pie.operator("paint.mask_flood_fill", text="    Fill Mask", icon_value=brush_icons["mask"],)
         op.mode = 'VALUE'
         op.value = 1
-        op = pie.operator("paint.mask_flood_fill", text='Clear Mask', icon="BLENDER")
+        op = pie.operator("paint.mask_flood_fill", text='    Clear Mask', icon_value=brush_icons["mask"],)
         op.mode = 'VALUE'
         op.value = 0
-        op = pie.operator("view3d.select_box", text="Box Mask", icon="BLENDER")
-        op = pie.operator("paint.mask_lasso_gesture", text="Lasso Mask", icon="BLENDER")
+        op = pie.operator("view3d.select_box", text="    Box Mask", icon_value=brush_icons["mask"],)
+        op = pie.operator("paint.mask_lasso_gesture", text="Lasso Mask", icon_value=brush_icons["mask"],)
         
 class VIEW3D_MT_pie_mask_2(Menu):
     bl_label = "Mask Edit 2"
@@ -89,23 +90,24 @@ class VIEW3D_MT_pie_mask_2(Menu):
     def draw(self, _context):
         layout = self.layout
         pie = layout.menu_pie()
+        pie.scale_y = 1.2
 
-        op = pie.operator("sculpt.mask_filter", text='Smooth Mask', icon="BLENDER")
+        op = pie.operator("sculpt.mask_filter", text='    Smooth Mask', icon_value=brush_icons["mask"],)
         op.filter_type = 'SMOOTH'
         op.auto_iteration_count = True
-        op = pie.operator("sculpt.mask_filter", text='Sharpen Mask', icon="BLENDER")
+        op = pie.operator("sculpt.mask_filter", text='    Sharpen Mask', icon_value=brush_icons["mask"],)
         op.filter_type = 'SHARPEN'
         op.auto_iteration_count = True
-        op = pie.operator("sculpt.mask_filter", text='Grow Mask', icon="BLENDER")
+        op = pie.operator("sculpt.mask_filter", text='    Grow Mask', icon_value=brush_icons["mask"],)
         op.filter_type = 'GROW'
         op.auto_iteration_count = True
-        op = pie.operator("sculpt.mask_filter", text='Shrink Mask', icon="BLENDER")
+        op = pie.operator("sculpt.mask_filter", text='    Shrink Mask', icon_value=brush_icons["mask"],)
         op.filter_type = 'SHRINK'
         op.auto_iteration_count = True
-        op = pie.operator("sculpt.mask_filter", text='Increase Contrast', icon="BLENDER")
+        op = pie.operator("sculpt.mask_filter", text='    Increase Contrast', icon_value=brush_icons["mask"],)
         op.filter_type = 'CONTRAST_INCREASE'
         op.auto_iteration_count = False
-        op = pie.operator("sculpt.mask_filter", text='Decrease Contrast', icon="BLENDER")
+        op = pie.operator("sculpt.mask_filter", text='    Decrease Contrast', icon_value=brush_icons["mask"],)
         op.filter_type = 'CONTRAST_DECREASE'
         op.auto_iteration_count = False
 
@@ -117,28 +119,29 @@ class VIEW3D_MT_pie_mask_3(Menu):
     def draw(self, _context):
         layout = self.layout
         pie = layout.menu_pie()
+        pie.scale_y = 1.2
         
-        op = pie.operator("sculpt.mask_filter", text='Smooth Mask', icon="BLENDER")
+        op = pie.operator("sculpt.mask_filter", text='    Smooth Mask', icon_value=brush_icons["mask"],)
         op.filter_type = 'SMOOTH'
         op.auto_iteration_count = True
-        op = pie.operator("sculpt.mask_expand", text="Expand Mask By Topology", icon="BLENDER")
+        op = pie.operator("sculpt.mask_expand", text="    Expand Mask By Topology", icon_value=brush_icons["mask"],)
         op.use_normals = False
         op.keep_previous_mask = False
         op.invert = True
         op.smooth_iterations = 2
-        op = pie.operator("sculpt.mask_expand", text="Expand Mask By Curvature", icon="BLENDER")
+        op = pie.operator("sculpt.mask_expand", text="    Expand Mask By Curvature", icon_value=brush_icons["mask"],)
         op.use_normals = True
         op.keep_previous_mask = True
         op.invert = False
         op.smooth_iterations = 0
-        op = pie.operator("mesh.paint_mask_extract", text="Mask Extract", icon="BLENDER")
-        op = pie.operator("mesh.paint_mask_slice", text="Mask Slice", icon="BLENDER")
+        op = pie.operator("mesh.paint_mask_extract", text="    Mask Extract", icon_value=brush_icons["mask"],)
+        op = pie.operator("mesh.paint_mask_slice", text="    Mask Slice", icon_value=brush_icons["mask"],)
         op.fill_holes = False
         op.new_object = False
-        op = pie.operator("mesh.paint_mask_slice", text="Mask Slice and Fill Holes", icon="BLENDER")
+        op = pie.operator("mesh.paint_mask_slice", text="    Mask Slice and Fill Holes", icon_value=brush_icons["mask"],)
         op.new_object = False
-        op = pie.operator("mesh.paint_mask_slice", text="Mask Slice to New Object", icon="BLENDER")
-        op = pie.operator("sculpt.dirty_mask", text='Dirty Mask', icon="BLENDER")
+        op = pie.operator("mesh.paint_mask_slice", text="    Mask Slice to New Object", icon_value=brush_icons["mask"],)
+        op = pie.operator("sculpt.dirty_mask", text='    Dirty Mask', icon_value=brush_icons["mask"],)
 
 class VIEW3D_MT_pie_mask_4(Menu):
     bl_label = "Mask Edit 4"
@@ -148,23 +151,24 @@ class VIEW3D_MT_pie_mask_4(Menu):
     def draw(self, _context):
         layout = self.layout
         pie = layout.menu_pie()
+        pie.scale_y = 1.2
 
-        op = pie.operator("sculpt.mask_filter", text='Smooth Mask', icon="BLENDER")
+        op = pie.operator("sculpt.mask_filter", text='    Smooth Mask', icon_value=brush_icons["mask"],)
         op.filter_type = 'SMOOTH'
         op.auto_iteration_count = True
-        op = pie.operator("paint.hide_show", text="Show All", icon="BLENDER")
+        op = pie.operator("paint.hide_show", text="    Show All", icon_value=brush_icons["mask"],)
         op.action = 'SHOW'
         op.area = 'ALL'
-        op = pie.operator("paint.hide_show", text="Show Bounding Box", icon="BLENDER")
+        op = pie.operator("paint.hide_show", text="    Show Bounding Box", icon_value=brush_icons["mask"],)
         op.action = 'SHOW'
         op.area = 'INSIDE'
-        op = pie.operator("paint.hide_show", text="Hide Bounding Box", icon="BLENDER")
+        op = pie.operator("paint.hide_show", text="    Hide Bounding Box", icon_value=brush_icons["mask"],)
         op.action = 'HIDE'
         op.area = 'INSIDE'
-        op = pie.operator("paint.hide_show", text="Hide Masked", icon="BLENDER")
+        op = pie.operator("paint.hide_show", text="    Hide Masked", icon_value=brush_icons["mask"],)
         op.action = 'HIDE'
         op.area = 'MASKED'
-        pie.menu("VIEW3D_MT_sculpt_set_pivot", text="Set Pivot", icon="BLENDER")
+        pie.menu("VIEW3D_MT_sculpt_set_pivot", text="    Set Pivot", icon_value=brush_icons["mask"],)
 
 class VIEW3D_MT_pie_brushes_1(Menu):
     bl_label = "Blue Brushes"
@@ -178,22 +182,22 @@ class VIEW3D_MT_pie_brushes_1(Menu):
         pie = layout.menu_pie()
         pie.scale_y = 1.2
         
-        op = pie.operator("paint.brush_select", text='    Inflate', icon_value=brush_icons["inflate"])
-        op.sculpt_tool = 'INFLATE'
-        op = pie.operator("paint.brush_select", text='    Draw Sharp', icon_value=brush_icons["draw_sharp"])
-        op.sculpt_tool = 'DRAW_SHARP'
-        op = pie.operator("paint.brush_select", text='    Clay Strips', icon_value=brush_icons["clay_strips"])
-        op.sculpt_tool = 'CLAY_STRIPS'
-        op = pie.operator("paint.brush_select", text='    Crease', icon_value=brush_icons["crease"])
-        op.sculpt_tool = 'CREASE'
-        op = pie.operator("paint.brush_select", text='    Blob', icon_value=brush_icons["blob"])
-        op.sculpt_tool = 'BLOB'
-        op = pie.operator("paint.brush_select", text='    Draw', icon_value=brush_icons["draw"])
-        op.sculpt_tool = 'DRAW'
-        op = pie.operator("paint.brush_select", text='    Layer', icon_value=brush_icons["layer"])
-        op.sculpt_tool = 'LAYER'
-        op = pie.operator("paint.brush_select", text='    Clay', icon_value=brush_icons["clay"])
-        op.sculpt_tool = 'CLAY'
+        op = pie.operator("wm.tool_set_by_id", text='    Inflate', icon_value=brush_icons["inflate"])
+        op.name='builtin_brush.Inflate'
+        op = pie.operator("wm.tool_set_by_id", text='    Draw Sharp', icon_value=brush_icons["draw_sharp"])
+        op.name='builtin_brush.Draw Sharp'
+        op = pie.operator("wm.tool_set_by_id", text='    Clay Strips', icon_value=brush_icons["clay_strips"])
+        op.name='builtin_brush.Clay Strips'
+        op = pie.operator("wm.tool_set_by_id", text='    Crease', icon_value=brush_icons["crease"])
+        op.name='builtin_brush.Crease'
+        op = pie.operator("wm.tool_set_by_id", text='    Blob', icon_value=brush_icons["blob"])
+        op.name='builtin_brush.Blob'
+        op = pie.operator("wm.tool_set_by_id", text='    Draw', icon_value=brush_icons["draw"])
+        op.name='builtin_brush.Draw'
+        op = pie.operator("wm.tool_set_by_id", text='    Layer', icon_value=brush_icons["layer"])
+        op.name='builtin_brush.Layer'
+        op = pie.operator("wm.tool_set_by_id", text='    Clay', icon_value=brush_icons["clay"])
+        op.name='builtin_brush.Clay'
 
 class VIEW3D_MT_pie_brushes_2(Menu):
     bl_label = "Red Brushes"
@@ -207,16 +211,16 @@ class VIEW3D_MT_pie_brushes_2(Menu):
         pie = layout.menu_pie()
         pie.scale_y = 1.2
 
-        op = pie.operator("paint.brush_select", text='    Smooth', icon_value=brush_icons["smooth"])
-        op.sculpt_tool = 'SMOOTH'
-        op = pie.operator("paint.brush_select", text='    Flatten', icon_value=brush_icons["flatten"])
-        op.sculpt_tool = 'FLATTEN'
-        op = pie.operator("paint.brush_select", text='    Fill', icon_value=brush_icons["fill"])
-        op.sculpt_tool = 'FILL'
-        op = pie.operator("paint.brush_select", text='    Scrape', icon_value=brush_icons["scrape"])
-        op.sculpt_tool = 'SCRAPE'
-        op = pie.operator("paint.brush_select", text='    Multiplane Scrape', icon_value=brush_icons["multiplane_scrape"])
-        op.sculpt_tool = 'MULTIPLANE_SCRAPE'
+        op = pie.operator("wm.tool_set_by_id", text='    Smooth', icon_value=brush_icons["smooth"])
+        op.name='builtin_brush.Smooth'
+        op = pie.operator("wm.tool_set_by_id", text='    Flatten', icon_value=brush_icons["flatten"])
+        op.name='builtin_brush.Flatten'
+        op = pie.operator("wm.tool_set_by_id", text='    Fill', icon_value=brush_icons["fill"])
+        op.name='builtin_brush.Fill'
+        op = pie.operator("wm.tool_set_by_id", text='    Scrape', icon_value=brush_icons["scrape"])
+        op.name='builtin_brush.Scrape'
+        op = pie.operator("wm.tool_set_by_id", text='    Multiplane Scrape', icon_value=brush_icons["multiplane_scrape"])
+        op.name='builtin_brush.Multiplane Scrape'
 
 class VIEW3D_MT_pie_brushes_3(Menu):
     bl_label = "Yellow Brushes"
@@ -229,20 +233,20 @@ class VIEW3D_MT_pie_brushes_3(Menu):
         layout = self.layout
         pie = layout.menu_pie()
         pie.scale_y = 1.2
-        op = pie.operator("paint.brush_select", text='    Pinch', icon_value=brush_icons["pinch"])
-        op.sculpt_tool = 'PINCH'
-        op = pie.operator("paint.brush_select", text='    Grab',      icon_value=brush_icons["grab"])
-        op.sculpt_tool = 'GRAB'
-        op = pie.operator("paint.brush_select", text='    Nudge',     icon_value=brush_icons["nudge"])
-        op.sculpt_tool = 'NUDGE'
-        op = pie.operator("paint.brush_select", text='    Thumb',     icon_value=brush_icons["thumb"])
-        op.sculpt_tool = 'THUMB'
-        op = pie.operator("paint.brush_select", text='    Snakehook', icon_value=brush_icons["snake_hook"])
-        op.sculpt_tool = 'SNAKE_HOOK'
-        op = pie.operator("paint.brush_select", text='    Rotate',    icon_value=brush_icons["rotate"])
-        op.sculpt_tool = 'ROTATE'
-        op = pie.operator("paint.brush_select", text='    Elastic Deform',    icon_value=brush_icons["elastic_deform"])
-        op.sculpt_tool = 'ELASTIC_DEFORM'
+        op = pie.operator("wm.tool_set_by_id", text='    Pinch', icon_value=brush_icons["pinch"])
+        op.name='builtin_brush.Pinch'
+        op = pie.operator("wm.tool_set_by_id", text='    Grab',      icon_value=brush_icons["grab"])
+        op.name='builtin_brush.Grab'
+        op = pie.operator("wm.tool_set_by_id", text='    Nudge',     icon_value=brush_icons["nudge"])
+        op.name='builtin_brush.Nudge'
+        op = pie.operator("wm.tool_set_by_id", text='    Thumb',     icon_value=brush_icons["thumb"])
+        op.name='builtin_brush.Thumb'
+        op = pie.operator("wm.tool_set_by_id", text='    Snakehook', icon_value=brush_icons["snake_hook"])
+        op.name='builtin_brush.Snake Hook'
+        op = pie.operator("wm.tool_set_by_id", text='    Rotate',    icon_value=brush_icons["rotate"])
+        op.name='builtin_brush.Rotate'
+        op = pie.operator("wm.tool_set_by_id", text='    Elastic Deform',    icon_value=brush_icons["elastic_deform"])
+        op.name='builtin_brush.Elastic Deform'
         op = pie.operator("wm.tool_set_by_id", text='    Pose',  icon_value=brush_icons["pose"],)
         op.name='builtin_brush.Pose'
 
@@ -290,7 +294,7 @@ class VIEW3D_MT_pie_brushes_5(Menu):
         pie.separator()
         pie.separator()
         pie.separator()
-        pie.menu(VIEW3D_MT_brushes_6.bl_idname, text="    Annotate", icon_value=972)
+        pie.menu(VIEW3D_MT_brushes_6.bl_idname, text="    Annotate", icon_value=brush_icons2["draw"],)
 
 class VIEW3D_MT_brushes_6(Menu):
     bl_label = "Annotate"
